@@ -1,5 +1,3 @@
-# coding: UTF-8
-
 import cv2
 import numpy as np
 import shapely.geometry
@@ -20,7 +18,7 @@ class Alignment:
 
             if shapely.geometry.Point(x, y).intersects(shapely.geometry.Polygon(dim * template[triangle])) else [0, 0, 0]
 
-                for x in xrange(dim) ] for y in xrange(dim) ]) for triangle in triangles ]
+                for x in range(dim) ] for y in range(dim) ]) for triangle in triangles ]
 
     def align(self, image, landmarks):
 

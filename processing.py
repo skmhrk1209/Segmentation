@@ -21,7 +21,7 @@ videoCapture = cv2.VideoCapture(os.path.join(args.dir, '000.mp4'))
 
 if not videoCapture.isOpened(): sys.exit('video not opened')
 
-template = openface.align_dlib.MINMAX_TEMPLATE
+template = np.load(os.path.join(fileDir, 'template.npy'))
 delaunay = scipy.spatial.Delaunay(template)
 
 facePredictor = os.path.join(fileDir, 'openface', 'models', 'dlib', 'shape_predictor_68_face_landmarks.dat')
@@ -30,7 +30,7 @@ alignment = alignment.Alignment(args.dim, template, delaunay.simplices)
 
 print('processing images...')
 
-for index in xrange(args.num):
+for index in range(args.num):
 
     ret, rawImage = videoCapture.read()
 

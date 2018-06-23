@@ -36,7 +36,7 @@ class Segmentation:
 
             maxBic, maxIndex = 0, 0
 
-            for middle in xrange(first, last):
+            for middle in range(first, last):
 
                 if (middle - first) < 2: continue
 
