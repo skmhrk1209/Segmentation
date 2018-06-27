@@ -18,7 +18,7 @@ class Alignment:
 
             if shapely.geometry.Point(x, y).intersects(shapely.geometry.Polygon(dim * template[triangle])) else [0, 0, 0]
 
-                for x in range(dim) ] for y in range(dim) ]) for triangle in triangles ]
+                for x in range(dim) ] for y in range(dim) ], dtype=np.uint8) for triangle in triangles ]
 
     def align(self, image, landmarks):
 
@@ -37,8 +37,8 @@ class Alignment:
             
             warpedImage = cv2.warpAffine(image[
                 minPosition[1]:maxPosition[1]+1, 
-                minPosition[0]:maxPosition[0]+1], 
-                affineTransform, (self.dim, self.dim))
+                    minPosition[0]:maxPosition[0]+1], 
+                        affineTransform, (self.dim, self.dim))
 
             alignedImage += warpedImage * mask
         

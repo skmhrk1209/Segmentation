@@ -17,14 +17,14 @@ args = parser.parse_args()
 
 print(args)
 
-videoCapture = cv2.VideoCapture(os.path.join(args.dir, '000.mp4'))
+videoCapture = cv2.VideoCapture(os.path.join(args.dir, '001.mp4'))
 
 if not videoCapture.isOpened(): sys.exit('video not opened')
 
 template = np.load(os.path.join(fileDir, 'template.npy'))
 delaunay = scipy.spatial.Delaunay(template)
 
-facePredictor = os.path.join(fileDir, 'openface', 'models', 'dlib', 'shape_predictor_68_face_landmarks.dat')
+facePredictor = os.path.join(fileDir, 'shape_predictor_68_face_landmarks.dat')
 alignDlib = openface.AlignDlib(facePredictor)
 alignment = alignment.Alignment(args.dim, template, delaunay.simplices)
 
